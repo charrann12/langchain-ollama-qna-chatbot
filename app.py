@@ -7,11 +7,12 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+langchain_api_key = os.getenv("LANGCHAIN_API_KEY")
 
-## langsmith Tracking 
-os.environ['LANGCHAIN_API_KEY'] = os.getenv("LANGCHAIN_API_KEY")
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"] = "QnA_ChatBot"
+if langchain_api_key:
+    os.environ["LANGCHAIN_API_KEY"] = langchain_api_key
+    os.environ["LANGCHAIN_TRACING_V2"] = "true"
+    os.environ["LANGCHAIN_PROJECT"] = "QnA_ChatBot"
 
 
 ## prompt template 
